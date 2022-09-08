@@ -12,6 +12,8 @@ EXPOSE 4200
 
 RUN npm run build
 
-ENTRYPOINT ["docker-entrypoint.sh"]
+CMD [ "start", "ng serve" ]
+
+#ENTRYPOINT ["/bin/bash"]
 
 
