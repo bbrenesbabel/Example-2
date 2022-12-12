@@ -1,0 +1,35 @@
+# Variables
+$SourcePath = "C:\base\*"
+$DestinationPath = "C:\APP_Presentacion_Flutter\APP_Presentacion_Flutter" 
+$RepositoryURL = "https://bcrtfs/tfs/BCRCollection/TPBCRComercialApp/_git/bcr-presentacion-app-flutter"
+
+Write-Output "Copia de archivos base"
+Write-Output "----------------------"
+Copy-Item $SourcePath $DestinationPath -recurse
+
+Write-Output "Ubicacion en directorio"
+Write-Output "----------------------"
+Set-Location -Path $DestinationPath
+
+Write-Output "Generacion del repositorio"
+Write-Output "----------------------"
+git init 
+git remote add origin $RepositoryURL
+git add . 
+git commit -m 'Carga inicial de repositorio'
+git push origin main:main
+git push origin main:release/test
+git push origin main:develop
+
+
+----------------------------------------------------------------------------------
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+git status
+git log
+git remote -v
+git config --global http.sslVerify false
+
+
+git push origin main:main       o master:main
+git push origin main:release/test
+git push origin main:develop
